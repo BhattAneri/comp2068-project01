@@ -60,7 +60,12 @@ const destinations = [
     'Costa Rica',
     'Bora Bora Islands',
     'Santorini',
-    'Banff'
+    'Banff',
+    'Caribbean',
+    'Phuket',
+    'Las Vegas',
+    'Bali',
+    'Machu Picchu'
   ];
 exports.new = (req, res) => {
   res.render(`${viewPath}/new`, {
