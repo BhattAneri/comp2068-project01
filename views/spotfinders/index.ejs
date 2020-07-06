@@ -1,0 +1,45 @@
+<!--
+  Step 1: This is your descretion how you would like to display data,
+  but you must list all the documents in your resource collection.
+-->
+<%- include ('../partials/header') %>
+
+<div class="container my-5">
+  <header>
+    <h1>Vacation Spots for Destinations</h1>
+  </header>
+
+  <hr>
+
+  <div class="content">
+    <% for (let spotfinder of spotfinders) { %>
+      <div class="card my-5">
+        <div class="card-header">
+          <h5 class="card-title">
+            for: <%= spotfinder.destination %>
+          </h5>
+        </div>
+
+        <div class="card-body">
+          <p class="card-text">
+            You saved this destination for <Strong> <%= spotfinder.typeOfVacation %> </Strong> your vacation budget is  <strong><%= spotfinder.holidayBudget%></strong> dollars. You can explore more places were you could make some pleasant memories :) .
+          </p>
+        </div>
+
+        <div class="card-footer text-muted">
+          <a href="/spotfinders/<%= spotfinder.id %>/edit"><i class="fa fa-edit">&nbsp;</i>Change your saved destination</a>
+          <br>
+          <form class="form-inline" action="/spotfinders/delete" method="post" onsubmit="return confirm('Are you sure you want to cancel your saved place?');">
+            <input type="hidden" value="<%= spotfinder.id %>" name="id">
+            <button class="delete" type="submit">
+              <i class="fa fa-trash">&nbsp;</i>
+              Cancel your Saved Destination
+            </button>
+          </form>
+        </div>
+      </div>
+    <% } %>
+  </div>
+</div>
+
+<%- include ('../partials/footer') %>

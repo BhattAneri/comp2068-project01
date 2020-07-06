@@ -1,0 +1,35 @@
+<!--
+  Step 1: This is your descretion how you would like to display data,
+  but you must list display only one document based on the passed ID.
+-->
+<%- include ('../partials/header') %>
+
+<div class="container my-5">
+  <header>
+    <h1>
+      Saved Vacation Spot for <%= spotfinder.destination %>
+    </h1>
+  </header>
+  <hr>
+  <div>
+    <p>
+      <strong>For:</strong>&nbsp;<%= spotfinder.user.fullname %>
+      <br>
+      <strong>At:</strong>&nbsp;<%= spotfinder.updatedAt.toLocaleString("en-CA") %>
+    </p>
+  </div>
+  <hr>
+  <div>
+    <a href="/spotfinders/<%= spotfinder.id %>/edit"><i class="fa fa-edit">&nbsp;</i>Change your destination</a>
+    <br>
+    <form class="form-inline" action="/spotfinders/delete" method="post" onsubmit="return confirm('Are you sure you want to delete this saved destination?');">
+      <input type="hidden" value="<%= spotfinder.id %>" name="id">
+      <button class="delete" type="submit">
+        <i class="fa fa-trash">&nbsp;</i>
+        Cancel your destination
+      </button>
+    </form>
+  </div>
+</div>
+
+<%- include ('../partials/footer') %>
